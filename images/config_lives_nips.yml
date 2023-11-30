@@ -1,0 +1,49 @@
+# The base configuration of the benchmark
+log: True
+name: 'lives_thesis_EMF'
+label: "th"
+file_type: ".hdf5"
+views:
+pathf: "/home/baptiste/Documents/Datasets/Alexis/data/last/"
+#pathf: "/home/bbauvin/projects/def-corbeilj/bbauvin/datasets/"
+nice: 1
+random_state: 42
+nb_cores: 10
+full: True
+debug: True
+add_noise: False
+noise_std: 0.0
+res_dir: "../results/"
+#res_dir: "/home/bbauvin/projects/def-corbeilj/bbauvin/results/"
+track_tracebacks: False
+
+# All the classification-realted configuration options
+multiclass_method: "oneVersusOne"
+split: 0.80
+nb_folds: 5
+nb_class: 2
+classes:
+cl_type: ["monoview", "multiview"]
+algos_monoview: ["adaboost", "decision_tree", "random_forest", 'scm', 'random_scm',
+                 "ib_decision_tree", "adaboost",  "svm_rbf",
+                 "knn", "lasso", ]
+algos_multiview: ["weighted_linear_late_fusion", "early_fusion_decision_tree", "early_fusion_scm",
+                  "early_fusion_random_forest", "early_fusion_imbalance_bagging",
+                  "early_fusion_random_scm", "early_fusion_cb", "mumbo",
+                  "lp_norm_mkl", "mvml", "early_fusion_svm_rbf",
+                  "early_fusion_adaboost", ]
+stats_iter: 10
+metrics:
+  f1_score:
+    average: 'binary'
+  accuracy_score: {}
+  balanced_accuracy: {}
+metric_princ: "balanced_accuracy"
+hps_type: "Random"
+hps_kwargs:
+  n_iter: 20
+#  n_iter: 20
+  equivalent_draws: False
+
+
+
